@@ -17,7 +17,7 @@
         } 
         
         $sql = "SELECT title
-                  FROM games";
+                  FROM game";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
