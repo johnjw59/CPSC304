@@ -22,8 +22,6 @@
         else {
           echo $conn->error();
         }
-
-        $conn->close();
         //-----------------------------------
 
       	include ("inc/navBar.php");
@@ -32,7 +30,8 @@
 
       	// Pages types
       	if ($_GET['page'] == "game"){
-      		include ("game/index.php");
+      		$id = $_GET['id'];
+      		include ("game/game_template.php");
       	}else if ($_GET['page'] == "developer"){
       		include ("developer/index.php");
       	} else if ($_GET['page'] == "admin"){
