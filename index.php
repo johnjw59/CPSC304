@@ -1,10 +1,14 @@
 <!DOCTYPE html>
   <html>
+  	<?php
+  		include ("inc/head.php");
+  	?>
     <body>
 
-      <h1>Hello World!</h1>
-      <?php
-        require_once('inc/conn.php'); 
+      <?php 
+      	// SQL Connection -------
+
+      	require_once('inc/conn.php'); 
         
         $sql = 'SELECT title
                   FROM game';
@@ -20,6 +24,26 @@
         }
 
         $conn->close();
+        //-----------------------------------
+
+      	include ("inc/navBar.php");
+      	echo "<div id=\"wrapper\">";
+      	include ("inc/sideBar.php");
+
+      	// Pages types
+      	if ($_GET['page'] == "game"){
+      		include ("game/index.php");
+      	}else if ($_GET['page'] == "developer"){
+      		include ("developer/index.php");
+      	} else if ($_GET['page'] == "admin"){
+      		include ("admin/index.php");
+      	} else if ($_GET['page'] == "user"){
+      		include ("user/index.php");
+      	} else {
+      		// Home
+      		include ("inc/mainPage.php");
+      	}
+      	echo "</div>";
       ?>
 
   </body>
