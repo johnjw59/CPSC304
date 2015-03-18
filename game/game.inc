@@ -1,24 +1,10 @@
 <?php
   if ($id) {
 
-    $sql = 'SELECT *
-            FROM game 
-            WHERE game_id =' . $id;
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-      $result = $result->fetch_assoc();
-      // Include template
-      $title = $result['title'];
-      $imgURL = $result['image_url'];
-      $description = $result['description'];
-      $release_date = $result['release_date'];
-    }
-
-
-    else {
-      echo 'no game with id ' . $id;
-    }
+      $game = $db_games->byId($id);
+      if ($game == null) {
+          echo 'no game with id ' . $id;
+        }
   } else {
     // R
     $sql = 'SELECT title

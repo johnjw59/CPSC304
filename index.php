@@ -1,3 +1,6 @@
+<?php
+    include_once(__DIR__ . '/inc/init.php');
+?>
 <!DOCTYPE html>
   <html>
   	<?php
@@ -6,22 +9,13 @@
     <body>
 
       <?php 
-      	// SQL Connection -------
+      	// example query -------
 
-      	require_once('inc/conn.php'); 
-        
-        $sql = 'SELECT title
-                  FROM game';
-        $result = $conn->query($sql);
+        $games = $db_games->all();
+        foreach($games as $game) {
+            echo $game->title . "<br />";
+        }
 
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-            echo $row['title'] . "<br />";
-          }
-        }
-        else {
-          echo $conn->error();
-        }
         //-----------------------------------
 
       	include ("inc/navBar.php");
@@ -29,18 +23,32 @@
       	include ("inc/sideBar.php");
 
       	// Pages types
-      	if ($_GET['page'] == "game"){
-      		$id = $_GET['id'];
-      		include ("game/game_template.php");
-      	}else if ($_GET['page'] == "developer"){
-      		include ("developer/index.php");
-      	} else if ($_GET['page'] == "admin"){
-      		include ("admin/index.php");
-      	} else if ($_GET['page'] == "user"){
-      		include ("user/index.php");
-      	} else {
-      		// Home
-      		include ("inc/mainPage.php");
+        if (!isset($_GET['page'])) 
+            $_GET['page'] = 'home';
+
+        switch($_GET['page']) {
+            case 'game': {
+                $id = $_GET['id'];
+                include ("game/game_template.php");
+                break;
+            }
+            case 'developer': {
+                include ("developer/index.php");
+                break;
+            }
+            case 'admin': {
+                include ("admin/index.php");
+                break;
+            }
+            case 'user': {
+                include ("user/index.php");
+                break;
+            }
+            default: {
+                // Home
+                include ("inc/mainPage.php");
+                break;
+            }
       	}
       	echo "</div>";
       ?>
