@@ -6,6 +6,7 @@
             echo 'no game with id ' . $id;
         }
         else {
+            $platforms = $db_platforms->gamePlatforms($id);
             include('game_template.php');
         }
     } else {

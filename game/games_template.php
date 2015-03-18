@@ -8,7 +8,6 @@
             <h1><a href="<?= $game->link() ?>"><?= $game->title ?></a></h1>
             <ul>
                 <li>Release Date: </li>
-                <li>Platforms: </li>
                 <li>Genre: </li>
                 <li>Developers:</li>
                 <li>Publisher:</li>

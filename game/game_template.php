@@ -6,14 +6,20 @@
     <div class="infoBox">
         <h1><a href="<?= $game->link() ?>"><?= $game->title ?></a></h1>
         <ul>
-            <li>Release Date: </li>
-            <li>Platforms: </li>
-            <li>Genre: </li>
-            <li>Developers:</li>
-            <li>Publisher:</li>
-            <li>Rating: </li>
+            <li><label>Release Date:</label> <span class="value"><?= $game->release_date ?></span></li>
+            <li><label>Platforms:</label> 
+                <ul>
+                    <?php foreach($platforms as $platform): ?>
+                        <li><?= $platform->name ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+            <li><label>Genre:</label> </li>
+            <li><label>Developers:</label> </li>
+            <li><label>Publisher:</label> </li>
+            <li><label>Rating:</label</li>
         </ul>
     </div>
-    <section><?= $game->description ?></section>
+    <section><?= nl2br($game->description) ?></section>
     <section>Section 2</section>
 </div>
