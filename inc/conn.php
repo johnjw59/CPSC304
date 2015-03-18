@@ -1,9 +1,8 @@
 <?php
-    //@nocommit
-    $servername = '127.0.0.1';
-    $username = 'root';
-    $password = 'svs142';
-    $database = 'cpsc304_project';
+  $servername = 'localhost';
+    $username = 'jwiebeca_cpsc304';
+    $password = 'P[q!O%e;q4z7';
+    $database = 'jwiebeca_cpsc304';
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);
