@@ -42,7 +42,7 @@
         public abstract function byId($id); 
 
         public function all() {
-            $query  = $this->prepare(sprintf('SELECT * FROM `%s`', $this->table));
+            $query  = $this->prepare(sprintf('SELECT * FROM %s', $this->table));
             $query->execute();
             return $query->fetchAll();
         }

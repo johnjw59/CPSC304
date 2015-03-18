@@ -15,7 +15,7 @@ class Games extends Repo
 
     public function byId($id) 
     { 
-        $query = $this->prepare('SELECT * FROM game WHERE game_id=:id');
+        $query = $this->prepare('SELECT * FROM game NATURAL JOIN genre NATURAL JOIN platform WHERE game_id=:id');
         $query->execute(array('id' => $id));
         return $query->fetch(PDO::FETCH_CLASS);
     }

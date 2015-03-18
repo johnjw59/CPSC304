@@ -5,7 +5,7 @@
     <?php foreach($games as $game): ?>
         <img class="gameBox" src="img/<?= $game->image_url ?>">
         <div class="infoBox">
-            <h1><a href="<?= $game->url() ?>"><?= $game->title ?></a></h1>
+            <h1><a href="<?= $game->link() ?>"><?= $game->title ?></a></h1>
             <ul>
                 <li>Release Date: </li>
                 <li>Platforms: </li>
