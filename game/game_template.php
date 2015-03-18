@@ -28,11 +28,11 @@
       <h1>Reviews</h1>
       <?php foreach($reviews as $review): ?>
         <div class="review">
-          <ul>
-            <li><?= $review->name ?></li>
-            <li><?= $review->rating ?></li>
-            <li><?= $review->text ?></li>
-          </ul>
+          <span class="name"><?= $review->name ?></span>
+          <span>Rating: <?= $review->rating ?></span>
+          <p>
+            <?= $review->text ?>
+          </p>
         </div>
       <?php endforeach;?> 
     </section>
