@@ -1,21 +1,19 @@
-<?php 
-  include('game.inc');
+<?php
+    /* Template for a single game */
 ?>
 <div class="mainPage">
-    <?php if($game != null): ?>
-        <img class="gameBox" src="img/<?= $game->imgURL ?>">
-        <div class="infoBox">
-            <h1><?= $game->title ?></h1>
-            <ul>
-                <li>Release Date: </li>
-                <li>Platforms: </li>
-                <li>Genre: </li>
-                <li>Developers:</li>
-                <li>Publisher:</li>
-                <li>Rating: </li>
-            </ul>
-        </div>
-        <section><?= $game->description ?></section>
-        <section>Section 2</section>
-    <?php endif; ?>
+    <img class="gameBox" src="img/<?= $game->image_url ?>">
+    <div class="infoBox">
+        <h1><a href="<?= $game->link() ?>"><?= $game->title ?></a></h1>
+        <ul>
+            <li>Release Date: </li>
+            <li>Platforms: </li>
+            <li>Genre: </li>
+            <li>Developers:</li>
+            <li>Publisher:</li>
+            <li>Rating: </li>
+        </ul>
+    </div>
+    <section><?= $game->description ?></section>
+    <section>Section 2</section>
 </div>

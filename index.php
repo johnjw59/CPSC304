@@ -9,15 +9,6 @@
     <body>
 
       <?php 
-      	// example query -------
-
-        $games = $db_games->all();
-        foreach($games as $game) {
-            echo $game->title . "<br />";
-        }
-
-        //-----------------------------------
-
       	include ("inc/navBar.php");
       	echo "<div id=\"wrapper\">";
       	include ("inc/sideBar.php");
@@ -28,8 +19,7 @@
 
         switch($_GET['page']) {
             case 'game': {
-                $id = $_GET['id'];
-                include ("game/game_template.php");
+                include ("game/game.inc");
                 break;
             }
             case 'developer': {
