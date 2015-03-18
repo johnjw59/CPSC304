@@ -20,6 +20,20 @@
             <li><label>Rating:</label</li>
         </ul>
     </div>
-    <section><?= nl2br($game->description) ?></section>
-    <section>Section 2</section>
+    <section>
+      <h1>Description</h1>
+      <?= nl2br($game->description) ?>
+    </section>
+    <section>
+      <h1>Reviews</h1>
+      <?php foreach($reviews as $review): ?>
+        <div class="review">
+          <ul>
+            <li><?= $review->name ?></li>
+            <li><?= $review->rating ?></li>
+            <li><?= $review->text ?></li>
+          </ul>
+        </div>
+      <?php endforeach;?> 
+    </section>
 </div>

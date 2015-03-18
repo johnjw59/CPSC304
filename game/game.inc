@@ -7,6 +7,7 @@
         }
         else {
             $platforms = $db_platforms->gamePlatforms($id);
+            $reviews = $db_reviews->gameReviews($id);
             include('game_template.php');
         }
     } else {

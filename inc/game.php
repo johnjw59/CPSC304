@@ -25,4 +25,12 @@ class Games extends Repo
 class Game extends DBObject
 {
     public function link() { return "?page=game&id=" . $this->game_id; }
+
+    public function getReviews() {
+        $query = $this->prepare('SELECT review_id ,user_id, game.game_id, `text`,rating 
+                                 FROM game,review 
+                                 WHERE game.game_id=:id AND review.game_id == game.game_id ');
+        $query->execute(array('id' => $this->game_id));
+        return $query->fetchAll();
+    }
 }
