@@ -20,6 +20,16 @@ class Games extends Repo
 
     public function byGenre($genre_id) {
     }
+
+    public function topRated($lim) {
+        
+    }
+
+    public function recentlyAdded($limit) {
+        $query = $this->prepare('SELECT game_id, title, image_url FROM game ORDER BY date_added DESC LIMIT ' . $limit);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
 
 class Game extends DBObject

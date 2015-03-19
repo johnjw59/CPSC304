@@ -11,7 +11,7 @@
       <?php 
       	include ("inc/navBar.php");
       	echo "<div id=\"wrapper\">";
-      	include ("inc/sideBar.php");
+      	include ("inc/sideBar_template.inc");
 
       	// Pages types
         if (!isset($_GET['page'])) 
