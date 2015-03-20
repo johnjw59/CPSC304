@@ -5,6 +5,11 @@
   <html>
   	<?php
   		include ("inc/head.php");
+
+      if (isset($_GET['logout'])) {
+          $_SESSION['user_id'] = NULL;
+          session_destroy();
+      }
   	?>
     <body>
 
@@ -13,9 +18,10 @@
       	echo "<div id=\"wrapper\">";
       	include ("inc/sideBar.php");
 
-      	// Pages types
-        if (!isset($_GET['page'])) 
+              	// Pages types
+        if (!isset($_GET['page'])) {
             $_GET['page'] = 'home';
+        }
 
         switch($_GET['page']) {
             case 'game': {
@@ -31,12 +37,8 @@
                 break;
             }
             case 'user': {
-                include ("user/index.php");
+                include ("user/user.inc");
                 break;
-            }
-            case 'login': {
-              include ('user/login.inc');
-              break;
             }
             default: {
                 // Home
