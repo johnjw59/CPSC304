@@ -34,6 +34,10 @@
                 include ("user/index.php");
                 break;
             }
+            case 'login': {
+              include ('user/login.inc');
+              break;
+            }
             default: {
                 // Home
                 include ("inc/mainPage.php");
