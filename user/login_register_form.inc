@@ -28,49 +28,50 @@
 
   }
 ?>
-
-<div class="left">
-  <h3>Login</h3>
-
-  <?php if (isset($error)): ?>
-    <div id="error"><?= $error_login ?></div>
-  <?php endif; ?>
-
-  <form id="login" action="index.php?page=user" method="POST">
-    <label>Email</label>
-    <input type="email" name="email" required>
+<div id="login-register">
+  <div class="left">
+    <h3>Login</h3>
   
-    <label>Password</label>
-    <input type="password" name="password" required>
+    <?php if (isset($error)): ?>
+      <div id="error"><?= $error_login ?></div>
+    <?php endif; ?>
   
-    <input type="submit" name="login" value="Login">
-  </form>
-</div>
-
-<div class="right">
-  <h3>Register an Account</h3>
-
-  <?php if (isset($error_register)): ?>
-    <div id="error"><?= $error_register ?></div>
-  <?php endif; ?>
-
-  <form id="register" action="index.php?page=user" method="POST">
-    <label>Email</label>
-    <input type="email" name="email" required>
-
-    <label>Username</label>
-    <input type="text" name="name" required>
+    <form id="login" action="index.php?page=user" method="POST">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    
+      <label>Password</label>
+      <input type="password" name="password" required>
+    
+      <input type="submit" name="login" value="Login">
+    </form>
+  </div>
   
-    <label>Password</label>
-    <input type="password" name="password" required>
-    <div id="password-warning">This site is meant as a school project only and therefore the security isn't up to current standards. We advise that you don't use your regular password</div>
-
-    <label>Re-Enter Password</label>
-    <input type="password" name="password2" required>
-
-    <!-- Captcha! -->
-    <!--<div class="g-recaptcha" data-sitekey="6LegywMTAAAAAAC4Pm24HNZ0m2qTqkLIVk54ogd8"></div>-->
+  <div class="right">
+    <h3>Register an Account</h3>
   
-    <input type="submit" name="register" value="Login">
-  </form>
+    <?php if (isset($error_register)): ?>
+      <div id="error"><?= $error_register ?></div>
+    <?php endif; ?>
+  
+    <form id="register" action="index.php?page=user" method="POST">
+      <label>Email</label>
+      <input type="email" name="email" required>
+  
+      <label>Username</label>
+      <input type="text" name="name" required>
+    
+      <label>Password</label>
+      <input type="password" name="password" required>
+      <div id="password-warning">This site is meant as a school project only and therefore the security isn't up to current standards. We advise that you don't use your regular password</div>
+  
+      <label>Re-Enter Password</label>
+      <input type="password" name="password2" required>
+  
+      <!-- Captcha! -->
+      <!--<div class="g-recaptcha" data-sitekey="6LegywMTAAAAAAC4Pm24HNZ0m2qTqkLIVk54ogd8"></div>-->
+    
+      <input type="submit" name="register" value="Login">
+    </form>
+  </div>
 </div>
