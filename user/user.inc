@@ -3,5 +3,5 @@
     echo '<h1>User</h1>';
   }
   else {
-    include('login_form.inc');
+    include('login_register_form.inc');
   }
