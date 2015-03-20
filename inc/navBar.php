@@ -2,7 +2,12 @@
 	<div class="button"><a href="index.php">Main</a></div>
 	<div class="button"><a href="index.php?page=game">Games</a></div>
 	<div class="button"><a href="index.php?page=developer">Developers</a></div>
-	<div class="button"><a href="index.php?page=user">User</a></div>
+  <?php if(!empty($_SESSION['user_id'])): ?>
+	  <div class="button"><a href="index.php?page=user">User</a></div>
+  <?php else: ?>
+    <div class="button"><a href="index.php?page=login">Login</a></div>
+  <?php endif; ?>
+
 	<form class="search">
 		<span class="searchBar"><input type="text" id="search_id"> </span>
 		<input class="searchButton" type="submit" value="Search">
