@@ -16,7 +16,6 @@
       <?php 
       	include ("inc/navBar.php");
       	echo "<div id=\"wrapper\">";
-      	include ("inc/sideBar.php");
 
               	// Pages types
         if (!isset($_GET['page'])) {
@@ -24,27 +23,28 @@
         }
 
         switch($_GET['page']) {
-            case 'game': {
+            case 'game':
+                include ("inc/sideBar.php");
                 include ("game/game.inc");
                 break;
-            }
-            case 'developer': {
+
+            case 'developer':
+                include ("inc/sideBar.php");
                 include ("developer/index.php");
                 break;
-            }
-            case 'admin': {
+
+            case 'admin': 
                 include ("admin/index.php");
                 break;
-            }
-            case 'user': {
+
+            case 'user':
                 include ("user/user.inc");
                 break;
-            }
-            default: {
+
+            default:
                 // Home
                 include ("inc/mainPage.php");
                 break;
-            }
       	}
       	echo "</div>";
       ?>

@@ -1,5 +1,6 @@
 <?php
   if (!empty($_SESSION['user_id'])) {
+    include ("inc/sideBar.php");
     echo '<h1>User</h1>';
   }
   else {
