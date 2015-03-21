@@ -24,12 +24,12 @@
 
         switch($_GET['page']) {
             case 'game':
-                include ("inc/sideBar.php");
+                include ("inc/sideBar_template.inc");
                 include ("game/game.inc");
                 break;
 
             case 'developer':
-                include ("inc/sideBar.php");
+                include ("inc/sideBar_template.inc");
                 include ("developer/index.php");
                 break;
 
