@@ -17,7 +17,7 @@
       	include ("inc/navBar.php");
       	echo "<div id=\"wrapper\">";
 
-              	// Pages types
+        // Pages types
         if (!isset($_GET['page'])) {
             $_GET['page'] = 'home';
         }
