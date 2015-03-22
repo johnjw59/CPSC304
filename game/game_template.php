@@ -28,7 +28,7 @@
       <h1>Reviews</h1>
       <?php foreach($reviews as $review): ?>
         <div class="review">
-          <span class="name"><?= $review->name ?></span>
+          <span class="name"><a href="index.php?page=user&id=<?= $review->user_id ?>"><?= $review->name ?></a></span>
           <span>Rating: <?= $review->rating ?></span>
           <p>
             <?= $review->text ?>
