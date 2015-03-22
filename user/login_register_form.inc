@@ -109,7 +109,7 @@
       <!-- Captcha! -->
       <!--<div class="g-recaptcha" data-sitekey="6LegywMTAAAAAAC4Pm24HNZ0m2qTqkLIVk54ogd8"></div>-->
     
-      <input type="submit" name="register" value="Login">
+      <input type="submit" name="register" value="Register Account">
     </form>
   </div>
 </div>

@@ -29,6 +29,7 @@ class User extends Repo
                                      VALUES (:name, :email, :pass)');
             $query->execute(array('email' => $email, 'name' => $name, 'pass' => $pass));
         }
+        // if the entry already exists in the DB, it'll throw error 23000
         catch (PDOException $e) {
             if ($e->getCode() == '23000') {
                 return FALSE;
