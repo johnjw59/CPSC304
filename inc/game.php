@@ -56,7 +56,8 @@ class Games extends Repo
                                  WHERE user_id=:uid AND game_id=:gid');
         $query->execute(array('uid' => $uid, 'gid' => $gid));
         // if the query doesn't return anything, the game isn't a favourite
-        if (empty($query->fetchAll())) {
+        $result = $query->fetchAll()
+        if (empty($result)) {
             return false;
         }
         return true;
