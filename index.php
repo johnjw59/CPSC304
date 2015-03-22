@@ -1,5 +1,6 @@
 <?php
-    include_once(__DIR__ . '/inc/init.php');
+  ob_start(); // needed for page redirects
+  include_once(__DIR__ . '/inc/init.php');
 ?>
 <!DOCTYPE html>
   <html>
