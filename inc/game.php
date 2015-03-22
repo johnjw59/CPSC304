@@ -41,6 +41,31 @@ class Games extends Repo
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getFavourites($uid) {
+        $query = $this->prepare('SELECT game_id, title, image_url 
+                                 FROM favourite NATURAL JOIN game 
+                                 WHERE user_id=:uid');
+        $query->execute(array('uid' => $uid));
+        return $query->fetchAll();
+    }
+
+    public function addFavourite($uid, $gid) {
+        try {
+            $query = $this->prepare('INSERT INTO favourite 
+                                     VALUES (:uid, :gid)');
+            $query->execute(array('uid' => $uid, 'gid' => $gid));
+        }
+        catch (PDOException $e) {
+            if ($e->getCode() == '23000') {
+                return FALSE;
+            }
+            else {
+                throw $e;
+            }
+        }
+        return TRUE;
+    }
 }
 
 class Game extends DBObject
