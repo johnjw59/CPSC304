@@ -5,7 +5,7 @@
     <img class="gameBox" src="img/<?= $game->image_url ?>">
     <div class="infoBox">
         <h1><a href="<?= $game->link() ?>"><?= $game->title ?></a></h1>
-        <?php if($isFavourite && isset($_SESSION['user_id'])): ?>
+        <?php if(isset($_SESSION['user_id']) && $isFavourite): ?>
           <span class="is_favourite"></span>
         <?php else: ?>
           <span class="favourite"><a href="index.php?page=game&id=<?= $game->game_id ?>&addFavourite">Add as Favourite</a></span>
