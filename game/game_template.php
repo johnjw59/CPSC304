@@ -5,6 +5,11 @@
     <img class="gameBox" src="img/<?= $game->image_url ?>">
     <div class="infoBox">
         <h1><a href="<?= $game->link() ?>"><?= $game->title ?></a></h1>
+        <?php if($isFavourite): ?>
+          <span class="is_favourite"></span>
+        <?php else: ?>
+          <span class="favourite"><a href="index.php?page=game&id=<?= $game->game_id ?>&addFavourite">Add as Favourite</a></span>
+        <?php endif; ?>
         <ul>
             <li><label>Release Date:</label> <span class="value"><?= $game->release_date ?></span></li>
             <li><label>Platforms:</label> 

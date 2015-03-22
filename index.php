@@ -24,8 +24,9 @@
 
         switch($_GET['page']) {
             case 'game':
-                include ("inc/sideBar_template.inc");
                 include ("game/game.inc");
+                // sidebar has to come after to ensure the sidebar favourites get updated
+                include ("inc/sideBar_template.inc");
                 break;
 
             case 'developer':

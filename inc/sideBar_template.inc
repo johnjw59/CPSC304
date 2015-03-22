@@ -7,6 +7,9 @@
   if (isset($_SESSION['user_id'])) {
     $favourites = $db_games->getFavourites($_SESSION['user_id']);
   }
+  else {
+    $favourites = false;
+  }
 ?>
 
 <div class="sideBar">
