@@ -14,7 +14,7 @@
     <h3>Your Favourites</h3>
     <ul>
       <?php foreach($favourites as $game): ?>
-        <li><a href="<?= $game->link() ?>"><?= $game->title ?></a></li>
+        <li><a href="<?= $game->link() ?>"><?= $game->title ?></a> <a class="removeFavourite" href="index.php?page=deleteFavourite&uid=<?= $_SESSION['user_id'] ?>&gid=<?= $game->game_id ?>">[X]</a></li>
       <?php endforeach; ?>
     </ul>
   <?php endif; ?>

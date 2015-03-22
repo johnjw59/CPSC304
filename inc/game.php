@@ -56,6 +56,7 @@ class Games extends Repo
                                      VALUES (:uid, :gid)');
             $query->execute(array('uid' => $uid, 'gid' => $gid));
         }
+        // if the entry already exists in the DB, it'll throw error 23000
         catch (PDOException $e) {
             if ($e->getCode() == '23000') {
                 return FALSE;
@@ -65,6 +66,13 @@ class Games extends Repo
             }
         }
         return TRUE;
+    }
+
+    public function removeFavourite($uid, $gid) {
+        $query = $this->prepare('DELETE FROM favourite
+                                 WHERE user_id=:uid AND game_id=:gid');
+        $query->execute(array('uid' => $uid, 'gid' => $gid));
+        return $query;
     }
 }
 

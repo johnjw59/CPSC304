@@ -41,6 +41,10 @@
                 include ("user/user.inc");
                 break;
 
+            case 'deleteFavourite':
+                include ('user/deleteFavourite.inc');
+                break;
+
             default:
                 // Home
                 include ("inc/mainPage.php");
