@@ -5,40 +5,51 @@
   <html>
   	<?php
   		include ("inc/head.php");
+
+      if (isset($_GET['logout'])) {
+          $_SESSION['user_id'] = NULL;
+          session_destroy();
+      }
   	?>
     <body>
 
       <?php 
       	include ("inc/navBar.php");
       	echo "<div id=\"wrapper\">";
-      	include ("inc/sideBar_template.inc");
 
-      	// Pages types
-        if (!isset($_GET['page'])) 
+        // Pages types
+        if (!isset($_GET['page'])) {
             $_GET['page'] = 'home';
+        }
 
         switch($_GET['page']) {
-            case 'game': {
+            case 'game':
                 include ("game/game.inc");
+                // sidebar has to come after to ensure the sidebar favourites get updated
+                include ("inc/sideBar_template.inc");
                 break;
-            }
-            case 'developer': {
+
+            case 'developer':
+                include ("inc/sideBar_template.inc");
                 include ("developer/index.php");
                 break;
-            }
-            case 'admin': {
+
+            case 'admin': 
                 include ("admin/index.php");
                 break;
-            }
-            case 'user': {
-                include ("user/index.php");
+
+            case 'user':
+                include ("user/user.inc");
                 break;
-            }
-            default: {
+
+            case 'deleteFavourite':
+                include ('user/deleteFavourite.inc');
+                break;
+
+            default:
                 // Home
                 include ("inc/mainPage.php");
                 break;
-            }
       	}
       	echo "</div>";
       ?>
