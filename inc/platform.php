@@ -15,7 +15,7 @@ class Platforms extends Repo
     }
 
     public function gamePlatforms($game_id) {
-        $query = $this->prepare('SELECT p.* FROM `platform` p NATURAL JOIN `onPlatform` op WHERE op.game_id=:game_id');
+        $query = $this->prepare('SELECT p.* FROM `platform` p NATURAL JOIN `onplatform` op WHERE op.game_id=:game_id');
         $query->execute(array('game_id' => $game_id));
         return $query->fetchAll();
     }

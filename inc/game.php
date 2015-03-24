@@ -10,8 +10,11 @@ class Games extends Repo
 
     public function byId($id) 
     { 
-        $query = $this->prepare('SELECT * 
-                                 FROM game 
+        $query = $this->prepare('SELECT g.*, ' .
+            '(SELECT GROUP_CONCAT(" ", ge.name) FROM genre ge NATURAL JOIN isgenre ig WHERE ig.game_id=g.game_id) AS genres, ' . 
+            '(SELECT GROUP_CONCAT(" ", c.company_name) FROM creator c NATURAL JOIN madeby mb WHERE mb.game_id=g.game_id) AS creators, ' . 
+            '(SELECT GROUP_CONCAT(" ", pl.name) FROM platform pl NATURAL JOIN onplatform op WHERE op.game_id=g.game_id) AS platforms ' . 
+                                 'FROM game g
                                  WHERE game_id=:id');
         $query->execute(array('id' => $id));
         return $query->fetch(PDO::FETCH_CLASS);
@@ -88,18 +91,41 @@ class Games extends Repo
         return $query;
     }
 
-    public function search($query) 
+    public function search($query, $genre = 0, $platform = 0, $developer = 0) 
     {
+        /* title keywords */
         $keywords = preg_split('/\s+/', $query);
         for($i = 0; $i < count($keywords); $i++) {
-            $keywords[$i] = "title LIKE '%{$keywords[$i]}%'";
+            $keywords[$i] = "g.title LIKE '%{$keywords[$i]}%'";
         }
         $like = implode(' AND ', $keywords);
-        $sql = 'SELECT * FROM game WHERE '. $like;
+
+        $sql = 'SELECT DISTINCT g.game_id FROM game g NATURAL JOIN onplatform op NATURAL JOIN isgenre ig NATURAL JOIN madeby mb WHERE '. $like; 
+
+        /* advanced search parameters */
+        if ($genre > 0) $sql .= ' AND ig.genre_id=' . $genre;
+        if ($platform > 0) $sql .= ' AND op.platform_id=' . $platform;
+        if ($developer > 0) $sql .= ' AND mb.creator_id=' . $developer;
 
         $qry = $this->prepare($sql);
         $qry->execute();
-        return $qry->fetchAll();
+        $gids = $qry->fetchAll();
+        $ids = array();
+        foreach($gids as $g) 
+            array_push($ids, intval($g->game_id));
+
+        /* no results */
+        if (count($ids) == 0)
+            return array();
+       
+        $qry2 = $this->prepare(
+            'SELECT g.*, ' . 
+            '(SELECT GROUP_CONCAT(" ", ge.name) FROM genre ge NATURAL JOIN isgenre ig WHERE ig.game_id=g.game_id) AS genres, ' . 
+            '(SELECT GROUP_CONCAT(" ", c.company_name) FROM creator c NATURAL JOIN madeby mb WHERE mb.game_id=g.game_id) AS creators, ' . 
+            '(SELECT GROUP_CONCAT(" ", pl.name) FROM platform pl NATURAL JOIN onplatform op WHERE op.game_id=g.game_id) AS platforms ' . 
+            'FROM game g WHERE g.game_id IN (' . implode($ids, ',') . ')');
+        $qry2->execute();
+        return $qry2->fetchAll();
     }
 }
 
