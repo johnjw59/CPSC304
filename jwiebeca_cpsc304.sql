@@ -38,13 +38,19 @@ INSERT INTO `creator` (`creator_id`, `company_name`, `type`, `description`, `cou
 
 -- Dumping structure for table cpsc304.favourite
 CREATE TABLE IF NOT EXISTS `favourite` (
-  `game_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `game_id` int(11) NOT NULL,
   PRIMARY KEY (`game_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table cpsc304.favourite: ~0 rows (approximately)
+-- Dumping data for table cpsc304.favourite: ~3 rows (approximately)
 /*!40000 ALTER TABLE `favourite` DISABLE KEYS */;
+INSERT INTO `favourite` (`user_id`, `game_id`) VALUES
+	(1, 1),
+	(4, 1),
+	(5, 1),
+	(1, 4),
+	(1, 5);
 /*!40000 ALTER TABLE `favourite` ENABLE KEYS */;
 
 
