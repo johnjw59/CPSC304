@@ -32,7 +32,7 @@
 
             case 'developer':
                 include ("inc/sideBar_template.inc");
-                include ("developer/index.php");
+                include ("developer/developer.inc");
                 break;
 
             case 'admin': 
