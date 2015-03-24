@@ -19,8 +19,18 @@
             $query->execute();
             return $query->fetchAll();
         }
+
+        public function getGames($id){
+            $query = $this->prepare('SELECT game.game_id, title, image_url  
+                                     FROM madeby NATURAL JOIN game 
+                                     WHERE creator_id=:id AND madeby.game_id = game.game_id');
+            $query->execute(array('id' => $id));
+            return $query->fetchAll();
+
+        }
     }
     
     class Creator extends DBObject {
         public function link() { return "?page=developer&id=" . $this->creator_id; }
+        public function linkGame() { return "?page=game&id=" . $this->game_id; }
     }
