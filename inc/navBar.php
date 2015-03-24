@@ -9,8 +9,8 @@
     <div class="button"><a href="index.php?page=user">Login</a></div>
   <?php endif; ?>
 
-	<form class="search">
-		<span class="searchBar"><input type="text" id="search_id"> </span>
+	<form class="search" action="index.php?page=search" method="post">
+		<span class="searchBar"><input type="text" name="query" id="search_id"> </span>
 		<input class="searchButton" type="submit" value="Search">
 	</form>
 </div>

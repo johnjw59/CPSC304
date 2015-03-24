@@ -87,6 +87,20 @@ class Games extends Repo
         $query->execute(array('uid' => $uid, 'gid' => $gid));
         return $query;
     }
+
+    public function search($query) 
+    {
+        $keywords = preg_split('/\s+/', $query);
+        for($i = 0; $i < count($keywords); $i++) {
+            $keywords[$i] = "title LIKE '%{$keywords[$i]}%'";
+        }
+        $like = implode(' AND ', $keywords);
+        $sql = 'SELECT * FROM game WHERE '. $like;
+
+        $qry = $this->prepare($sql);
+        $qry->execute();
+        return $qry->fetchAll();
+    }
 }
 
 class Game extends DBObject
