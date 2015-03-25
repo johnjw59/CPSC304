@@ -31,4 +31,10 @@ class Reviews extends Repo
         $query->execute(array('id' => $user_id));
         return $query->fetchAll(PDO::FETCH_CLASS);
     }
+
+    public function addReview($user_id,$game_id,$text,$rating){
+        $query = $this->prepare('INSERT INTO review
+                                 SET game_id=:game_id, user_id=:user_id,text=:t,rating=:rating');
+        $query->execute(array('game_id'=>$game_id,'user_id'=>$user_id,'t'=>$text,'rating'=>$rating));
+    }
 }
