@@ -19,4 +19,11 @@ class Genres extends Repo
         $query->execute(array('id' => $id));
         return $query->fetchAll();
     }
+
+    public function getAll() {
+        $query = $this->prepare('SELECT genre_id, name
+                                 FROM genre');
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

@@ -28,6 +28,22 @@
             return $query->fetchAll();
 
         }
+
+        public function getPublishers(){
+            $query = $this->prepare('SELECT creator_id, company_name  
+                                     FROM creator 
+                                     WHERE type="publisher" OR type="both"');
+            $query->execute();
+            return $query->fetchAll();
+        }
+
+        public function getDevelopers(){
+            $query = $this->prepare('SELECT creator_id, company_name  
+                                     FROM creator 
+                                     WHERE type="developer" OR type="both"');
+            $query->execute();
+            return $query->fetchAll();
+        }
     }
     
     class Creator extends DBObject {

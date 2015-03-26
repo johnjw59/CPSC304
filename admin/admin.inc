@@ -2,6 +2,7 @@
   switch($_GET['admin']) {
     case 'addGame':
       echo "<h1>Add a Game</h1>";
+      include('addGame.inc');
       break;
 
     case 'editGame':

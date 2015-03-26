@@ -19,4 +19,11 @@ class Platforms extends Repo
         $query->execute(array('game_id' => $game_id));
         return $query->fetchAll();
     }
+
+    public function getAll() {
+        $query = $this->prepare('SELECT platform_id, name
+                                 FROM platform');
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
