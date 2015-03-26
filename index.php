@@ -9,6 +9,7 @@
 
       if (isset($_GET['logout'])) {
           $_SESSION['user_id'] = NULL;
+          $_SESSION['admin'] = NULL;
           session_destroy();
       }
   	?>
@@ -40,7 +41,9 @@
                 break;
 
             case 'admin': 
-                include ("admin/index.php");
+                if (isset($_SESSION['admin']) && ($_SESSION['admin'] == true)) {
+                  include ("admin/admin.inc");
+                }
                 break;
 
             case 'user':
