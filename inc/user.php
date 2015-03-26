@@ -38,7 +38,7 @@ class User extends Repo
                 throw $e;
             }
         }
-        $query = $this->prepare('SELECT LAST_INSERT_ID()');
+        $query = $this->prepare('SELECT LAST_INSERT_ID() FROM user');
         $query->execute();
         return $query->fetch(PDO::FETCH_NUM);
     }
