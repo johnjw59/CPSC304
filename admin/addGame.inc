@@ -8,8 +8,8 @@
   $platforms = $db_platforms->getAll();
 
   if (!empty($_POST['submit'])) {
-    //if (isset($_POST['title']) && isset($_POST['image']) && isset($_POST['description']) && isset($_POST['developer']) && isset($_POST['publisher']) && isset($_POST['platform']) && isset($_POST['genre']) && isset($_POST['release_date'])) {
-
+    if (!empty($_POST['title']) && !empty($_FILES["image"]) && !empty($_POST['description']) && !empty($_POST['developer']) && !empty($_POST['publisher']) && !empty($_POST['platform']) && !empty($_POST['genre']) && !empty($_POST['release_date'])) {
+      
       // try to upload file
       include('inc/upload.php');
 
@@ -30,10 +30,10 @@
   
         //header('Location: /index.php?page=game&id=' . $id);
       }
-    /*}
+    }
     else {
       $error .= "All fields are required!\n";
-    }*/
+    }
   }
 ?>
 

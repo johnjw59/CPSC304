@@ -24,20 +24,17 @@
   }
   // Check file size
   if ($_FILES["image"]["size"] > 500000) {
-      $error .= "Sorry, your file is too large.\n";
+      $error .= "Your file is too large.\n";
       $uploadOk = 0;
   }
   // Allow certain file formats
   if($ext != "jpg" && $ext != "png" && $ext != "jpeg"
   && $ext != "gif" ) {
-      $error .= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.\n";
+      $error .= "Only JPG, JPEG, PNG & GIF files are allowed.\n";
       $uploadOk = 0;
   }
   // Check if $uploadOk is set to 0 by an error
-  if ($uploadOk == 0) {
-      $error .= "Sorry, your file was not uploaded.\n";
-  // if everything is ok, try to upload file
-  } else {
+  if ($uploadOk != 0) {
       if (!move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
           $error .= "Sorry, there was an error uploading your file\n.";
       }
