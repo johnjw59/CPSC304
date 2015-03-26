@@ -13,6 +13,16 @@
             $query->execute(array('id' => $id));
             return $query->fetch(PDO::FETCH_CLASS);
         }
+
+        public function addCreator($name, $type, $description, $country, $year, $website, $image_url) {
+            $query = $this->prepare('INSERT INTO creator (company_name, type, description, country, year_founded, website, image_url)
+                                         VALUES (:name, :type, :description, :country, :year, :website, :image_url)');
+            $query->execute(array('name' => $name, 'type' => $type, 'description' => $description, 'country' => $country, 'year' => $year, 'website' => $website, 'image_url' => $image_url));
+    
+            $creator_id = $this->prepare('SELECT LAST_INSERT_ID() FROM creator');
+            $creator_id->execute();
+            return $creator_id->fetch(PDO::FETCH_NUM);
+        }
     
         public function recentlyAdded($limit) {
             $query = $this->prepare('SELECT creator_id, company_name, image_url FROM    creator ORDER BY date_added DESC LIMIT ' . $limit);

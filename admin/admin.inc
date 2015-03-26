@@ -11,6 +11,7 @@
 
     case 'addCreator':
       echo "<h1>Add a Creator</h1>";
+      include('addCreator.inc');
       break;
 
     case 'editCreator':
