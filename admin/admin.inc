@@ -19,6 +19,7 @@
 
     case 'addPlatform':
       echo "<h1>Add a Platform</h1>";
+      include('addPlatform.inc');
       break;
 
     case 'addGenre':

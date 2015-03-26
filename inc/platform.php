@@ -8,6 +8,12 @@ class Platforms extends Repo
     public function insert($game) { /* ... */ }
     public function save($game) { /* ... */ }
 
+    public function addPlatform($name, $manufacturer) {
+        $query = $this->prepare('INSERT INTO platform (name, manufacturer)
+                                 VALUES (:name, :manufacturer)');
+        $query->execute(array('name' => $name, 'manufacturer' => $manufacturer));
+    }
+
     public function byId($id) {
         $query = $this->prepare('SELECT p.* FROM `platform` p WHERE p.platform_id=:id');
         $query->execute(array('id' => $id));
