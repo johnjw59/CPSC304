@@ -15,6 +15,10 @@
         // if we got a user, log them in!
         if ($user) {
           $_SESSION['user_id'] = $user->user_id;
+
+          if ($user->admin !=0) {
+            $_SESSION['admin'] = true;
+          }
           // reload the page
           header('Location: /index.php?page=user'); 
         }

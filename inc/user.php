@@ -16,7 +16,7 @@ class User extends Repo
     }
 
     public function login($email, $pass) { 
-        $query = $this->prepare('SELECT user_id
+        $query = $this->prepare('SELECT user_id, admin
                                  FROM user 
                                  WHERE email=:email AND password=:pass');
         $query->execute(array('email' => $email, 'pass' => $pass));

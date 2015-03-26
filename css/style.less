@@ -18,6 +18,39 @@ Red:		RGB(224,72,72)
 	padding: 10px;
 }
 
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+
+//--------------------------------------------
+//						Admin Bar
+//--------------------------------------------
+#adminBar{
+	background-color: #000;
+	.button {
+		width: auto;
+		height: auto;
+		float: left;
+		text-align: inherit;
+		padding-top: inherit;
+		padding: 0 5px;
+		font-size: 0.5em;
+		&:hover { 
+			background-color: rgba(117, 117, 117, 0.7);
+		}
+		a {
+			color: #fff;
+		}
+	}
+}
 
 
 

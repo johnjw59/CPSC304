@@ -14,7 +14,11 @@
   	?>
     <body>
 
-      <?php 
+      <?php
+        if (isset($_SESSION['admin']) && ($_SESSION['admin'] == true)) {
+          include('admin/adminBar.inc');
+        }
+
       	include ("inc/navBar.php");
       	echo "<div id=\"wrapper\">";
 
