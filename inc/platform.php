@@ -26,4 +26,10 @@ class Platforms extends Repo
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function addGamePlatform($game_id, $platform_id) {
+        $query = $this->prepare('INSERT INTO onplatform
+                                 VALUES (:gid, :pid)');
+        $query->execute(array('gid' => $game_id, 'pid' => $platform_id));
+    }
 }

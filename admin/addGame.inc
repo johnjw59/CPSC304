@@ -9,7 +9,7 @@
 
   if (!empty($_POST['submit'])) {
     if (!empty($_POST['title']) && !empty($_FILES["image"]) && !empty($_POST['description']) && !empty($_POST['developer']) && !empty($_POST['publisher']) && !empty($_POST['platform']) && !empty($_POST['genre']) && !empty($_POST['release_date'])) {
-      
+
       // try to upload file
       include('inc/upload.php');
 
@@ -22,13 +22,14 @@
         $genre = $_POST['genre'];
         $date = $_POST['release_date'];
   
-        /*$id = $db_games->addGame($title, $fname, $desc, $date);
-        $db_genre->addGameGenre($id, $genre);
-        $db_platform->addGamePlatform($id, $platform);
-        $db_creator->addMadeGame($id, $dev);
-        $db_creator->addMadeGame($id, $pub);*/
+        $id = $db_games->addGame($title, $fname, $desc, $date);
+        $id = $id[0];
+        $db_genres->addGameGenre($id, $genre);
+        $db_platforms->addGamePlatform($id, $plat);
+        $db_creators->addMadeGame($id, $dev);
+        $db_creators->addMadeGame($id, $pub);
   
-        //header('Location: /index.php?page=game&id=' . $id);
+        header('Location: /index.php?page=game&id=' . $id);
       }
     }
     else {

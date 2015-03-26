@@ -44,6 +44,12 @@
             $query->execute();
             return $query->fetchAll();
         }
+
+        public function addMadeGame($game_id, $creator_id) {
+            $query = $this->prepare('INSERT INTO madeby
+                                     VALUES (:gid, :cid)');
+            $query->execute(array('gid' => $game_id, 'cid' => $creator_id));
+        }
     }
     
     class Creator extends DBObject {

@@ -26,4 +26,10 @@ class Genres extends Repo
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function addGameGenre($game_id, $genre_id) {
+        $query = $this->prepare('INSERT INTO isgenre
+                                 VALUES (:game_id, :genre_id)');
+        $query->execute(array('game_id' => $game_id, 'genre_id' => $genre_id));
+    }
 }

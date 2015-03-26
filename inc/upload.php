@@ -14,14 +14,15 @@
       }
   }
   // Check if file already exists, and if so, re-name it.
+  $i;
   if (file_exists($target_file)) {
       $i = 0;
       do {
         $i++;
         $target_file = $dir . $fname . $i . '.' . $ext;
       } while (file_exists($target_file));
-      $fname = $fname . $i . '.' . $ext;
   }
+  $fname = $fname . $i . '.' . $ext;
   // Check file size
   if ($_FILES["image"]["size"] > 500000) {
       $error .= "Your file is too large.\n";
