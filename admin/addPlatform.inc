@@ -23,10 +23,10 @@
   <?php endif; ?>
 
   <label>Name</label>
-  <input type="text" name="name" >
+  <input type="text" name="name" required>
 
   <label>Manufacturer</label>
-  <input type="text" name="manufacturer" >
+  <input type="text" name="manufacturer" required>
   
   <input type="submit" name="submit" value="Add Platform">
 </form>

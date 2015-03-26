@@ -24,6 +24,7 @@
 
     case 'addGenre':
       echo "<h1>Add a Genre</h1>";
+      include('addGenre.inc');
       break;
 
     default:
