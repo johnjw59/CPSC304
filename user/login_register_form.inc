@@ -75,7 +75,7 @@
     <h3>Login</h3>
   
     <?php if (isset($error_login)): ?>
-      <div id="error"><?= $error_login ?></div>
+      <div class="error"><?= $error_login ?></div>
     <?php endif; ?>
   
     <form id="login" action="index.php?page=user" method="POST">
@@ -93,7 +93,7 @@
     <h3>Register an Account</h3>
   
     <?php if (isset($error_register)): ?>
-      <div id="error"><?= $error_register ?></div>
+      <div class="error"><?= $error_register ?></div>
     <?php endif; ?>
   
     <form id="register" action="index.php?page=user" method="POST">
