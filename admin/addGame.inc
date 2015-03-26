@@ -44,16 +44,16 @@
   <?php endif; ?>
 
   <label>Title</label>
-  <input type="text" name="title" >
+  <input type="text" name="title" required>
 
   <label>Image</label>
-  <input type="file" name="image" >
+  <input type="file" name="image" required>
 
   <label>Description</label>
-  <textarea name="description" ></textarea>
+  <textarea name="description" required></textarea>
 
   <label>Developer</label>
-  <select name="developer" >
+  <select name="developer" required>
     <?php foreach ($developers as $dev): ?>
       <option selected disabled hidden value=''></option>
       <option value="<?= $dev->creator_id ?>"><?= $dev->company_name ?></option>
@@ -61,7 +61,7 @@
   </select>
 
   <label>Publisher</label>
-  <select name="publisher" >
+  <select name="publisher" required>
     <?php foreach ($publishers as $pub): ?>
       <option selected disabled hidden value=''></option>
       <option value="<?= $pub->creator_id ?>"><?= $pub->company_name ?></option>
@@ -69,7 +69,7 @@
   </select>
 
   <label>Platform</label>
-  <select name="platform" >
+  <select name="platform" required>
     <option selected disabled hidden value=''></option>
     <?php foreach ($platforms as $plat): ?>
       <option selected disabled hidden value=''></option>
@@ -78,7 +78,7 @@
   </select>
 
   <label>Genre</label>
-  <select name="genre" >
+  <select name="genre" required>
     <option selected disabled hidden value=''></option>
     <?php foreach ($genres as $gen): ?>
       <option selected disabled hidden value=''></option>
@@ -87,7 +87,7 @@
   </select>
 
   <label>Release Date</label>
-  <input type="date" name="release_date" >
+  <input type="date" name="release_date" required>
   
   <input type="submit" name="submit" value="Add Game">
 </form>
