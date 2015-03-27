@@ -10,6 +10,8 @@
             <li><label>Year Founded:</label><?= $developer->year_founded ?> </li>
             <li><label>Website:</label><a href="<?= $developer->website ?>"><?=$developer->website?></a></li>
             <li><label>Date Added:</label><?= $developer->date_added ?></li>
+            <li><label>Average Game Rating:</label><?= $avg_rating ?></li>
+            <li><label>Max Rated Game:</label><a href="<?= $max_game->linkGame(); ?>"><?= $max_game->title ?></a></li>
         </ul>
     </div>
     <section>

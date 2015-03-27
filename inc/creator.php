@@ -39,6 +39,22 @@
 
         }
 
+        public function getHighestRated($id) {
+            $query = $this->prepare('SELECT game_id, title, MAX(rating)
+                                     FROM review NATURAL JOIN madeby NATURAL JOIN game
+                                     WHERE creator_id=:id');
+            $query->execute(array('id' => $id));
+            return $query->fetch(PDO::FETCH_CLASS);
+        }
+
+        public function getAvgRating($id) {
+            $query = $this->prepare('SELECT AVG(rating)
+                                     FROM review NATURAL JOIN madeby
+                                     WHERE creator_id=:id');
+            $query->execute(array('id' => $id));
+            return $query->fetch(PDO::FETCH_NUM);
+        }
+
         public function getPublishers(){
             $query = $this->prepare('SELECT creator_id, company_name  
                                      FROM creator 
