@@ -1,7 +1,8 @@
 <?php
     /* This file should now only contain the database settings */
-    // $sql_servername = 'localhost';
-
+    
+    // Production---------------------
+    $sql_servername = 'localhost';
     $sql_username = 'jwiebeca_cpsc304';
     $sql_password = 'P[q!O%e;q4z7';
     $sql_database = 'jwiebeca_cpsc304';
