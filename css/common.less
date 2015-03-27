@@ -1,0 +1,41 @@
+//--------------------------------------------
+//				General Classes
+//--------------------------------------------
+
+.box{
+	background-color: rgba(128, 191, 232, 0.5);
+	box-sizing: border-box;
+}
+
+.infoBox { 
+	.box;
+	width: 58.857%;
+	float: left;
+	margin-left: 2.857%;
+	margin-bottom: 20px;
+	//Temp
+	height: 400px;
+
+	h1:hover {
+		background-color: rgba(255, 83, 84, 1);
+	}
+
+	ul {
+		margin: 10px;
+
+		label {
+			font-weight: bold;
+		}
+	}
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+    }
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */

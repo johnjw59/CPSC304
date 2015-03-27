@@ -10,7 +10,7 @@
   <?php endif; ?>
 
 	<form class="search" action="index.php?page=search" method="post">
-		<span class="searchBar"><input type="text" name="query" id="search_id"> </span>
+		<span class="searchBar"><input type="text" name="query" id="search_id" placeholder="Search..."> </span>
 		<input class="searchButton" type="submit" value="Search">
 	</form>
 </div>

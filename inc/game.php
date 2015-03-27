@@ -14,7 +14,9 @@ class Games extends Repo
             '(SELECT AVG(r.rating) FROM review r WHERE r.game_id=g.game_id) AS rating, ' . 
             '(SELECT GROUP_CONCAT(" ", ge.name) FROM genre ge NATURAL JOIN isgenre ig WHERE ig.game_id=g.game_id) AS genres, ' . 
             '(SELECT GROUP_CONCAT(" ", c.company_name) FROM creator c NATURAL JOIN madeby mb WHERE mb.game_id=g.game_id) AS creators, ' . 
-            '(SELECT GROUP_CONCAT(" ", pl.name) FROM platform pl NATURAL JOIN onplatform op WHERE op.game_id=g.game_id) AS platforms ' . 
+            '(SELECT GROUP_CONCAT(" ", pl.name) FROM platform pl NATURAL JOIN onplatform op WHERE op.game_id=g.game_id) AS platforms,' . 
+            '(SELECT AVG(rating) FROM review r WHERE r.game_id=g.game_id ) AS rating,'.
+            '(SELECT GROUP_CONCAT(" ", c.company_name) FROM creator c NATURAL JOIN madeby m WHERE m.game_id=g.game_id AND (c.type="both" OR c.type="publisher") AND c.creator_id=m.creator_id) AS publishers ' .
                                  'FROM game g
                                  WHERE game_id=:id');
         $query->execute(array('id' => $id));
