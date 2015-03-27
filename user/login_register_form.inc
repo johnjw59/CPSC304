@@ -105,7 +105,7 @@
     
       <label>Password</label>
       <input type="password" name="password_r" required>
-      <div id="password-warning">This site is meant as a school project only and therefore the security isn't up to current standards. We advise that you don't use your regular password</div>
+      <span class="warning">This site is meant as a school project only and therefore the security isn't up to current standards. We advise that you don't use your regular password</span>
   
       <label>Re-Enter Password</label>
       <input type="password" name="password2" required>

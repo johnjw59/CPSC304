@@ -60,6 +60,13 @@
                                      VALUES (:gid, :cid)');
             $query->execute(array('gid' => $game_id, 'cid' => $creator_id));
         }
+
+        public function updateCreator($id, $name, $type, $description, $country, $year, $website, $image_url) {
+            $query = $this->prepare('UPDATE creator
+                                     SET company_name=:name, type=:type, description=:description, country=:country, year_founded=:year, website=:website, image_url=:image_url
+                                     WHERE creator_id=:id');
+            $query->execute(array('id' => $id, 'name' => $name, 'type' => $type, 'description' => $description, 'country' => $country, 'year' => $year, 'website' => $website, 'image_url' => $image_url));
+        }
     }
     
     class Creator extends DBObject {

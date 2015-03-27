@@ -52,7 +52,7 @@
   <input type="text" name="country" required>
 
   <label>Website</label>
-  <input type="url" name="website" required>
+  <input type="text" name="website" required>
 
   <label>Year Founded</label>
   <input type="number" name="year_founded" min="1850" max="<?= date('Y') ?>" required>
