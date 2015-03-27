@@ -172,7 +172,7 @@ class Games extends Repo
         }
         $like = implode(' AND ', $keywords);
 
-        $sql = 'SELECT DISTINCT g.game_id FROM game g NATURAL JOIN onplatform op NATURAL JOIN isgenre ig NATURAL JOIN madeby mb WHERE '. $like; 
+        $sql = 'SELECT DISTINCT g.game_id FROM game g NATURAL LEFT JOIN onplatform op NATURAL LEFT JOIN isgenre ig NATURAL LEFT JOIN madeby mb WHERE '. $like; 
 
         /* advanced search parameters */
         if ($genre > 0) $sql .= ' AND ig.genre_id=' . $genre;
