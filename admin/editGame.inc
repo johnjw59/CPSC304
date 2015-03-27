@@ -19,7 +19,7 @@
         $db_genres->addGameGenre($id, $_POST['genre_new']);
     }
     $db_games->updateGame($id, $title, $fname, $desc, $date);
-    //header('Location: /index.php?page=game&id=' . $id);
+    header('Location: ' . $base_url . '/index.php?page=game&id=' . $id);
   }
   else if (!empty($_POST['delete'])) {
     $db_games->deleteId($_POST['id']);

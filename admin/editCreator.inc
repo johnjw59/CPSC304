@@ -13,7 +13,7 @@
     $fname = isset($fname) ? $fname : $creator->image_url;
 
     $db_creators->updateCreator($id, $name, $type, $desc, $country, $year, $url, $fname);
-    header('Location: /index.php?page=developer&id=' . $id);
+    header('Location: ' . $base_url . '/index.php?page=developer&id=' . $id);
   }
   else if (!empty($_POST['delete'])) {
     $db_creators->deleteId($_POST['id']);

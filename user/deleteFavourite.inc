@@ -1,7 +1,7 @@
 <?php
   if (isset($_POST['deleteFavourite'])) {
     $db_games->removeFavourite($_GET['uid'], $_GET['gid']);
-    header('Location: /index.php');
+    header('Location: ' . $base_url . '/index.php');
   }
   
   $game = $db_games->byId($_GET['gid']);

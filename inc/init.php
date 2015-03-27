@@ -2,15 +2,16 @@
 error_reporting(-1);
 ini_set('display_errors', 'On');
 session_start();
+$base_url = '';
 
-include(__DIR__ . '/conn.php');
+include('conn.php');
 include(__DIR__ . '/db.php');
-include(__DIR__ . '/game.php');
-include(__DIR__ . '/creator.php');
-include(__DIR__ . '/platform.php');
-include(__DIR__ . '/genre.php');
-include(__DIR__ . '/review.php');
-include(__DIR__ . '/user.php');
+include('game.php');
+include('creator.php');
+include('platform.php');
+include('genre.php');
+include('review.php');
+include('user.php');
 
 $db = new Database($sql_servername, $sql_username, $sql_password, $sql_database);
 $db_games = new Games($db);

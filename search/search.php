@@ -28,5 +28,5 @@ else {
 
     $results = $db_games->search($query, $genre, $platform, $developer);
 
-    include(__DIR__ . '/results_template.php');
+    include('results_template.php');
 }
