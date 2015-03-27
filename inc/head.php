@@ -3,7 +3,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" >
 	<script src='js/lib/jquery/jquery.js'></script>
 	<?php
-	if ($_GET['page'] == 'game'){
+
+	if (isset($_GET['page']) && $_GET['page'] == 'game'){
 		echo '<script src="js/game.js"></script>';
 	}
 	?>

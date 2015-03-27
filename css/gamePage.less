@@ -1,15 +1,5 @@
 @import "common.less";
 
-.infoBox { 
-	.box;
-	width: 58.857%;
-	float: left;
-	margin-left: 2.857%;
-	margin-bottom: 20px;
-	//Temp
-	height: 400px;
-}
-
 .gameSection {
 	clear: both;
 	.infoBox {
@@ -19,17 +9,25 @@
 
 .review {
 	.box;
-	background-color: rgb(237,235,100);
-	margin: 10px 0 10px 0;
+	background-color: rgba(128, 191, 232, 0.4);
+	margin: 10px;
 	h3 {
 		margin: 0;
 		width: 58.857%;
 	}
 	span { 
 		float: right;
+		margin-right: 10px;
+		label {
+			font-weight: bold;
+		}
 	}
 	.name {
 		float: left;
+		margin-left: 10px;
+		&:hover {
+			color: rgb(39,121,173);
+		}
 	}
 	p {
 		clear:both;
@@ -38,8 +36,11 @@
 
 .reviewForm {
 	background-color: rgb(237,235,100);
-	.reviewText {
+}
+
+textarea{
+		background-color: rgb(237,235,100);
+		resize:none;
 		width:50%;
 		height:50px;
 	}
-}

@@ -15,14 +15,16 @@
         <ul>
             <li><label>Release Date:</label> <span class="value"><?= $game->release_date ?></span></li>
             <li><label>Platforms:</label> <?= $game->platforms ?></li>
-            <li><label>Genre: <?= $game->genres ?></label> </li>
-            <li><label>Developers/Publishers: <?= $game->creators ?></label> </li>
-            <li><label>Rating: <?= $game->getRating() ?></label</li>
+            <li><label>Genre:</label> <?= $game->genres ?> </li>
+            <li><label>Developers:</label> <?= $game->creators ?> </li>
+            <li><label>Publisher:</label> <?= $game->publishers?></li>
+            <li><label>Rating:</label> <?=$game->rating?></li>
         </ul>
     </div>
     <section>
       <h1>Description</h1>
-      <?= nl2br($game->description) ?>
+      <p><?= nl2br($game->description)?>
+      </p>
     </section>
     <section>
       <h1>Reviews</h1>
@@ -30,7 +32,9 @@
         <button class="addReview _addReview">Add Review</button>
         <div class="reviewForm _reviewForm">
         <form action="index.php?page=game&id=<?=$game->game_id?>&review=true" method="post">
+          <label>Comment: </label>
           <textarea name="reviewText" class="reviewText"></textarea>
+          <label>Rating:</label>
           <select name="rating" >
             <option value="0" selected>0</option>
             <option value="1">1</option>
@@ -51,7 +55,7 @@
       <?php foreach($reviews as $review): ?>
         <div class="review">
           <span class="name"><a href="index.php?page=user&id=<?= $review->user_id ?>"><?= $review->name ?></a></span>
-          <span>Rating: <?= $review->rating ?></span>
+          <span><label>Rating:</label> <?= $review->rating ?></span>
           <p>
             <?= $review->text ?>
           </p>
