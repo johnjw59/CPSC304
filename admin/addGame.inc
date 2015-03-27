@@ -3,7 +3,6 @@
 
   $developers = $db_creators->getDevelopers();
   $publishers = $db_creators->getPublishers();
-  $platforms;
   $genres = $db_genres->getAll();
   $platforms = $db_platforms->getAll();
 
@@ -54,16 +53,16 @@
 
   <label>Developer</label>
   <select name="developer" required>
+    <option selected disabled hidden value=''></option>
     <?php foreach ($developers as $dev): ?>
-      <option selected disabled hidden value=''></option>
       <option value="<?= $dev->creator_id ?>"><?= $dev->company_name ?></option>
     <?php endforeach; ?>
   </select>
 
   <label>Publisher</label>
   <select name="publisher" required>
+    <option selected disabled hidden value=''></option>
     <?php foreach ($publishers as $pub): ?>
-      <option selected disabled hidden value=''></option>
       <option value="<?= $pub->creator_id ?>"><?= $pub->company_name ?></option>
     <?php endforeach; ?>
   </select>
@@ -72,7 +71,6 @@
   <select name="platform" required>
     <option selected disabled hidden value=''></option>
     <?php foreach ($platforms as $plat): ?>
-      <option selected disabled hidden value=''></option>
       <option value="<?= $plat->platform_id ?>"><?= $plat->name ?></option>
     <?php endforeach; ?>
   </select>
@@ -81,7 +79,6 @@
   <select name="genre" required>
     <option selected disabled hidden value=''></option>
     <?php foreach ($genres as $gen): ?>
-      <option selected disabled hidden value=''></option>
       <option value="<?= $gen->genre_id ?>"><?= $gen->name ?></option>
     <?php endforeach; ?>
   </select>

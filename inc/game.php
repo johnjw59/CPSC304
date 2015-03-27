@@ -26,6 +26,14 @@ class Games extends Repo
     public function byGenre($genre_id) {
     }
 
+    public function gameCreators($id) {
+        $query = $this->prepare('SELECT creator_id
+                                 FROM game NATURAL JOIN madeby
+                                 WHERE game_id=:id');
+        $query->execute(array('id' => $id));
+        return $query->fetchAll();
+    }
+
     public function addGame($title, $image_url, $description, $release_date) {
         $query = $this->prepare('INSERT INTO game (title, image_url, description, release_date)
                                      VALUES (:title, :image_url, :description, :release_date)');
@@ -34,6 +42,35 @@ class Games extends Repo
         $game_id = $this->prepare('SELECT LAST_INSERT_ID() FROM game');
         $game_id->execute();
         return $game_id->fetch(PDO::FETCH_NUM);
+    }
+
+    public function updateGame($id, $title, $image_url, $description, $release_date) {
+        $query = $this->prepare('UPDATE game
+                                 SET title=:title, image_url=:image_url, description=:description, release_date=:release_date 
+                                 WHERE game_id=:id');
+        $query->execute(array('id' => $id, 'title' => $title, 'image_url' => $image_url, 'description' => $description, 'release_date' => $release_date));
+    }
+
+    public function deleteId($game_id) {
+        $query = $this->prepare('DELETE FROM game
+                                 WHERE game_id=:id');
+        $query->execute(array('id' => $game_id));
+        
+        $query = $this->prepare('DELETE FROM madeby
+                                 WHERE game_id=:id');
+        $query->execute(array('id' => $game_id));
+
+        $query = $this->prepare('DELETE FROM onplatform
+                                 WHERE game_id=:id');
+        $query->execute(array('id' => $game_id));
+
+        $query = $this->prepare('DELETE FROM favourite
+                                 WHERE game_id=:id');
+        $query->execute(array('id' => $game_id));
+
+        $query = $this->prepare('DELETE FROM review
+                                 WHERE game_id=:id');
+        $query->execute(array('id' => $game_id));
     }
 
     public function topRated($limit) {

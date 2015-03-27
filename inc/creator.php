@@ -55,6 +55,13 @@
             return $query->fetchAll();
         }
 
+        public function getAll() {
+            $query = $this->prepare('SELECT creator_id, company_name
+                                     FROM creator');
+            $query->execute();
+            return $query->fetchAll();
+        }
+
         public function addMadeGame($game_id, $creator_id) {
             $query = $this->prepare('INSERT INTO madeby
                                      VALUES (:gid, :cid)');

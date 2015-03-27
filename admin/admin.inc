@@ -7,6 +7,7 @@
 
     case 'editGame':
       echo "<h1>Edit a Game</h1>";
+      include('editGame.inc');
       break;
 
     case 'addCreator':
