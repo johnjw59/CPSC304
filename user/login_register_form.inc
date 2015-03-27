@@ -75,13 +75,19 @@
     <?php endif; ?>
   
     <form id="login" action="index.php?page=user" method="POST">
-      <label>Email</label>
-      <input type="email" name="email" required>
-    
-      <label>Password</label>
-      <input type="password" name="password" required>
-    
-      <input type="submit" name="login" value="Login">
+        <div class="login-row">
+            <label>Email</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="login-row">
+            <label>Password</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <div class="login-row">
+            <input type="submit" name="login" value="Login">
+        </div>
     </form>
   </div>
   
@@ -93,23 +99,32 @@
     <?php endif; ?>
   
     <form id="register" action="index.php?page=user" method="POST">
-      <label>Email</label>
-      <input type="email" name="email_r" required>
-  
-      <label>Username</label>
-      <input type="text" name="name" required>
-    
-      <label>Password</label>
-      <input type="password" name="password_r" required>
-      <div id="password-warning">This site is meant as a school project only and therefore the security isn't up to current standards. We advise that you don't use your regular password</div>
-  
-      <label>Re-Enter Password</label>
-      <input type="password" name="password2" required>
-  
-      <!-- Captcha! -->
-      <!--<div class="g-recaptcha" data-sitekey="6LegywMTAAAAAAC4Pm24HNZ0m2qTqkLIVk54ogd8"></div>-->
-    
-      <input type="submit" name="register" value="Register Account">
+        <div class="register-row">
+            <label>Email</label>
+            <input type="email" name="email_r" required>
+        </div>
+
+        <div class="register-row">
+            <label>Username</label>
+            <input type="text" name="name" required>
+        </div>
+
+        <div id="password-warning">This site is meant as a school project only and therefore the security isn't up to current standards. We advise that you don't use your regular password</div>
+
+        <div class="register-row">
+            <label>Password</label>
+            <input type="password" name="password_r" required>
+        </div>
+
+        <div class="register-row">
+            <label>Re-Enter Password</label>
+            <input type="password" name="password2" required>
+        </div>
+
+        <!-- Captcha! -->
+        <!--<div class="g-recaptcha" data-sitekey="6LegywMTAAAAAAC4Pm24HNZ0m2qTqkLIVk54ogd8"></div>-->
+
+        <input type="submit" name="register" value="Register Account">
     </form>
   </div>
 </div>

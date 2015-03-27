@@ -16,9 +16,8 @@
             <li><label>Release Date:</label> <span class="value"><?= $game->release_date ?></span></li>
             <li><label>Platforms:</label> <?= $game->platforms ?></li>
             <li><label>Genre: <?= $game->genres ?></label> </li>
-            <li><label>Developers: <?= $game->creators ?></label> </li>
-            <li><label>Publisher:</label> </li>
-            <li><label>Rating:</label</li>
+            <li><label>Developers/Publishers: <?= $game->creators ?></label> </li>
+            <li><label>Rating: <?= $game->getRating() ?></label</li>
         </ul>
     </div>
     <section>

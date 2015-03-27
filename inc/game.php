@@ -11,6 +11,7 @@ class Games extends Repo
     public function byId($id) 
     { 
         $query = $this->prepare('SELECT g.*, ' .
+            '(SELECT AVG(r.rating) FROM review r WHERE r.game_id=g.game_id) AS rating, ' . 
             '(SELECT GROUP_CONCAT(" ", ge.name) FROM genre ge NATURAL JOIN isgenre ig WHERE ig.game_id=g.game_id) AS genres, ' . 
             '(SELECT GROUP_CONCAT(" ", c.company_name) FROM creator c NATURAL JOIN madeby mb WHERE mb.game_id=g.game_id) AS creators, ' . 
             '(SELECT GROUP_CONCAT(" ", pl.name) FROM platform pl NATURAL JOIN onplatform op WHERE op.game_id=g.game_id) AS platforms ' . 
@@ -24,6 +25,18 @@ class Games extends Repo
     }
 
     public function byGenre($genre_id) {
+    }
+
+    public function byCreator($creator_id) {
+        $query = $this->prepare('SELECT g.*, ' .
+            '(SELECT AVG(r.rating) FROM review r WHERE r.game_id=g.game_id) AS rating, ' . 
+            '(SELECT GROUP_CONCAT(" ", ge.name) FROM genre ge NATURAL JOIN isgenre ig WHERE ig.game_id=g.game_id) AS genres, ' . 
+            '(SELECT GROUP_CONCAT(" ", c.company_name) FROM creator c NATURAL JOIN madeby mb WHERE mb.game_id=g.game_id) AS creators, ' . 
+            '(SELECT GROUP_CONCAT(" ", pl.name) FROM platform pl NATURAL JOIN onplatform op WHERE op.game_id=g.game_id) AS platforms ' . 
+            'FROM game g NATURAL JOIN madeby mb ' .
+            'WHERE mb.creator_id=:id');
+        $query->execute(array('id' => $creator_id));
+        return $query->fetchAll();
     }
 
     public function topRated($limit) {
@@ -91,6 +104,18 @@ class Games extends Repo
         return $query;
     }
 
+    public function all() {
+        $query  = $this->prepare(
+            'SELECT g.*, ' . 
+            '(SELECT AVG(r.rating) FROM review r WHERE r.game_id=g.game_id) AS rating, ' . 
+            '(SELECT GROUP_CONCAT(" ", ge.name) FROM genre ge NATURAL JOIN isgenre ig WHERE ig.game_id=g.game_id) AS genres, ' . 
+            '(SELECT GROUP_CONCAT(" ", c.company_name) FROM creator c NATURAL JOIN madeby mb WHERE mb.game_id=g.game_id) AS creators, ' . 
+            '(SELECT GROUP_CONCAT(" ", pl.name) FROM platform pl NATURAL JOIN onplatform op WHERE op.game_id=g.game_id) AS platforms ' . 
+            'FROM game g'); 
+        $query->execute();
+        return $query->fetchAll();
+    }
+
     public function search($query, $genre = 0, $platform = 0, $developer = 0) 
     {
         /* title keywords */
@@ -120,6 +145,7 @@ class Games extends Repo
        
         $qry2 = $this->prepare(
             'SELECT g.*, ' . 
+            '(SELECT AVG(r.rating) FROM review r WHERE r.game_id=g.game_id) AS rating, ' . 
             '(SELECT GROUP_CONCAT(" ", ge.name) FROM genre ge NATURAL JOIN isgenre ig WHERE ig.game_id=g.game_id) AS genres, ' . 
             '(SELECT GROUP_CONCAT(" ", c.company_name) FROM creator c NATURAL JOIN madeby mb WHERE mb.game_id=g.game_id) AS creators, ' . 
             '(SELECT GROUP_CONCAT(" ", pl.name) FROM platform pl NATURAL JOIN onplatform op WHERE op.game_id=g.game_id) AS platforms ' . 
@@ -132,20 +158,5 @@ class Games extends Repo
 class Game extends DBObject
 {
     public function link() { return "?page=game&id=" . $this->game_id; }
-
-    public function getReviews() {
-        $query = $this->prepare('SELECT review_id ,user_id, game_id, `text`, rating 
-                                 FROM game NATURAL JOIN review 
-                                 WHERE game_id=:id');
-        $query->execute(array('id' => $this->game_id));
-        return $query->fetchAll();
-    }
-
-    public function getRating() {
-        $query = $this->prepare('SELECT AVG(rating) 
-                                 FROM game NATURAL JOIN review 
-                                 WHERE game_id=:id');
-        $query->execute(array('id' => $this->game_id));
-        return $query->fetch(PDO::FETCH_CLASS);
-    }
+    public function getRating() { return round($this->rating, 1); }
 }

@@ -7,7 +7,7 @@
 		}
 		else {
 			/* Some additional info about Devs */
-			$games = $db_creators->getGames($id);
+			$games = $db_games->byCreator($id);
 			include('developer_template.php');
 		}
 	} else {
