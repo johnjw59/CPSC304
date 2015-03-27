@@ -43,7 +43,7 @@
     $game_creators = $db_games->gameCreators($id);
     $num_creat = 0;*/
 
-    include('editgame_form.inc');
+    include('editGame_form.inc');
   }
   else {
     $games = $db_games->all();
