@@ -43,13 +43,12 @@ CREATE TABLE IF NOT EXISTS `favourite` (
   PRIMARY KEY (`game_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table cpsc304.favourite: ~3 rows (approximately)
+-- Dumping data for table cpsc304.favourite: ~4 rows (approximately)
 /*!40000 ALTER TABLE `favourite` DISABLE KEYS */;
 INSERT INTO `favourite` (`user_id`, `game_id`) VALUES
 	(1, 1),
 	(4, 1),
 	(5, 1),
-	(1, 4),
 	(1, 5);
 /*!40000 ALTER TABLE `favourite` ENABLE KEYS */;
 
@@ -196,17 +195,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` tinytext NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` tinytext NOT NULL,
+  `admin` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id` (`user_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table cpsc304.user: 3 rows
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`user_id`, `name`, `email`, `password`) VALUES
-	(1, 'John', 'johnjw59@gmail.com', 'c0f2e5c77c372ae1b5e30c52bed447a8'),
-	(2, 'Joe', 'a;lsdk', 'a;lskdf'),
-	(3, 'Jeff', 'a;lskdfj', 'a;lskd');
+INSERT INTO `user` (`user_id`, `name`, `email`, `password`, `admin`) VALUES
+	(1, 'John', 'johnjw59@gmail.com', 'c0f2e5c77c372ae1b5e30c52bed447a8', 1),
+	(2, 'Joe', 'a;lsdk', 'a;lskdf', 0),
+	(3, 'Jeff', 'a;lskdfj', 'a;lskd', 0),
+	(4, 'Admin', 'cpsc304@admin.com', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -15,6 +15,10 @@
         // if we got a user, log them in!
         if ($user) {
           $_SESSION['user_id'] = $user->user_id;
+
+          if ($user->admin !=0) {
+            $_SESSION['admin'] = true;
+          }
           // reload the page
           header('Location: /index.php?page=user'); 
         }
@@ -71,7 +75,7 @@
     <h3>Login</h3>
   
     <?php if (isset($error_login)): ?>
-      <div id="error"><?= $error_login ?></div>
+      <div class="error"><?= $error_login ?></div>
     <?php endif; ?>
   
     <form id="login" action="index.php?page=user" method="POST">
@@ -95,7 +99,7 @@
     <h3>Register an Account</h3>
   
     <?php if (isset($error_register)): ?>
-      <div id="error"><?= $error_register ?></div>
+      <div class="error"><?= $error_register ?></div>
     <?php endif; ?>
   
     <form id="register" action="index.php?page=user" method="POST">

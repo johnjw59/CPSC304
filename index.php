@@ -9,12 +9,17 @@
 
       if (isset($_GET['logout'])) {
           $_SESSION['user_id'] = NULL;
+          $_SESSION['admin'] = NULL;
           session_destroy();
       }
   	?>
     <body>
 
-      <?php 
+      <?php
+        if (isset($_SESSION['admin']) && ($_SESSION['admin'] == true)) {
+          include('admin/adminBar.inc');
+        }
+
       	include ("inc/navBar.php");
       	echo "<div id=\"wrapper\">";
 
@@ -36,7 +41,9 @@
                 break;
 
             case 'admin': 
-                include ("admin/index.php");
+                if (isset($_SESSION['admin']) && ($_SESSION['admin'] == true)) {
+                  include ("admin/admin.inc");
+                }
                 break;
 
             case 'user':
