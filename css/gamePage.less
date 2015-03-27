@@ -3,7 +3,13 @@
 .gameSection {
 	clear: both;
 	.infoBox {
+		width: 79.429%;
 		height: 100%;
+		margin: 10px 0 10px 10px;
+	}
+	.gameBox {
+		margin: 10px 0 10px 10px;
+		width:18%; //thumbnail
 	}
 }
 
@@ -35,11 +41,31 @@
 }
 
 .reviewForm {
-	background-color: rgb(237,235,100);
+	background-color: rgba(128, 191, 232, 0.4);
+	margin: 10px 10px 0 10px;
+	box-sizing: border-box;
+	padding-left: 10px;
+
+	.addReview {
+		margin: 0 0 10px 0;
+	}
+}
+
+.addReview {
+	background-color: rgba(224, 72, 72, 1);
+	margin: 10px;
+	border: none;
+	font-size: 1em; /* 20px / 16px */
+	color: #FFFFFF;
+	&:hover {
+		background-color: rgba(255, 83, 84, 1);
+	}
+	&:active {
+		background-color: rgba(255, 83, 84, 0.5);
+	}
 }
 
 textarea{
-		background-color: rgb(237,235,100);
 		resize:none;
 		width:50%;
 		height:50px;
