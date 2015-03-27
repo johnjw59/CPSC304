@@ -67,6 +67,16 @@
                                      WHERE creator_id=:id');
             $query->execute(array('id' => $id, 'name' => $name, 'type' => $type, 'description' => $description, 'country' => $country, 'year' => $year, 'website' => $website, 'image_url' => $image_url));
         }
+
+        public function deleteId($creator_id) {
+            $query = $this->prepare('DELETE FROM creator
+                                     WHERE creator_id=:id');
+            $query->execute(array('id' => $creator_id));
+            
+            $query = $this->prepare('DELETE FROM madeby
+                                     WHERE creator_id=:id');
+            $query->execute(array('id' => $creator_id));
+        }
     }
     
     class Creator extends DBObject {

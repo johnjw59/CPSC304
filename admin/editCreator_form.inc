@@ -33,6 +33,9 @@
 
 <div class="right">
   <form id="admin-delete" action="index.php?page=admin&admin=editCreator" method="POST">
+    <input type="hidden" name="id" value="<?= $id ?>">
+    <input type="hidden" name="name" value="<?= $creator->company_name ?>">
+
     <label>Delete Creator?</label>
     <input type="submit" name="delete" value="Delete Creator">
     <span class="warning">Once you hit this button, the creator will be deleted and there's no going back!</span>

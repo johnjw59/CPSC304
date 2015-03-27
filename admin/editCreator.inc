@@ -18,7 +18,9 @@
     header('Location: /index.php?page=developer&id=' . $id);
   }
   else if (!empty($_POST['delete'])) {
-    echo 'oh shit, you deleted it dumby';
+    $db_creators->deleteId($_POST['id']);
+    echo '<div id="success">' . $_POST['name'] . ' and all references to it have been deleted.</div>';
+
     $creators = $db_creators->all();
     include('chooseCreator_form.inc');
   }
