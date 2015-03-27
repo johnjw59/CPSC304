@@ -20,7 +20,7 @@
             $_SESSION['admin'] = true;
           }
           // reload the page
-          header('Location: /index.php?page=user'); 
+          header('Location: ' . $base_url . '/index.php?page=user'); 
         }
         // if we didn't, they must not exist
         else {
@@ -56,7 +56,7 @@
         if ($user) {
           $_SESSION['user_id'] = $user[0];
           // reload the page
-          header('Location: /index.php?page=user');
+          header('Location: ' . $base_url . '/index.php?page=user');
         }
         // otherwise it wasn't meaning that email is already associated with a user
         else {

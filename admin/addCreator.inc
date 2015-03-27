@@ -17,7 +17,7 @@
         $id = $db_creators->addCreator($name, $type, $desc, $country, $year, $url, $fname);
         $id = $id[0];
   
-        header('Location: /index.php?page=developer&id=' . $id);
+        header('Location: ' . $base_url . '/index.php?page=developer&id=' . $id);
       }
     }
     else {

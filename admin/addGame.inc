@@ -28,7 +28,7 @@
         $db_creators->addMadeGame($id, $dev);
         $db_creators->addMadeGame($id, $pub);
   
-        header('Location: /index.php?page=game&id=' . $id);
+        header('Location: ' . $base_url . '/index.php?page=game&id=' . $id);
       }
     }
     else {

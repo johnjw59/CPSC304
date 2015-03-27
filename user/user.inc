@@ -6,7 +6,7 @@
     $name = $db_user->byId($user_id);
     // if the supplied user_id isn't associated with a user, forget all this and load login page
     if (!$name) {
-      header('index.php?page=user');
+      header('Location: ' . $base_url . '/index.php?page=user');
     }
     $reviews = $db_reviews->byUserId($user_id);
 
