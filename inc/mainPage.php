@@ -1,5 +1,5 @@
 <?php 
-	$number_of_games 	= 3;
+	$number_of_games 	= 4;
 	$top_rated 			= $db_games->topRated($number_of_games);
 	$recent_games 		= $db_games->recentlyAdded($number_of_games); 
 ?>
