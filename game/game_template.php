@@ -18,7 +18,7 @@
             <li><label>Genre:</label> <?= $game->genres ?> </li>
             <li><label>Developers:</label> <?= $game->creators ?> </li>
             <li><label>Publisher:</label> <?= $game->publishers?></li>
-            <li><label>Rating:</label> <?=$game->rating?></li>
+            <li><label>Rating:</label> <?=$game->getRating() ?></li>
         </ul>
     </div>
     <section>
