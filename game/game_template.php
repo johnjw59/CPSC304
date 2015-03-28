@@ -9,7 +9,7 @@
           <?php if($isFavourite): ?>
             <span class="is_favourite"></span>
           <?php else: ?>
-            <span class="favourite"><a href="index.php?page=game&id=<?= $game->game_id ?>&addFavourite">Add as Favourite</a></span>
+            <a class="favourite buttonForm" href="index.php?page=game&id=<?= $game->game_id ?>&addFavourite">Add as Favourite</a>
           <?php endif; ?>
         <?php endif; ?>
         <ul>
@@ -29,7 +29,7 @@
     <section>
       <h1>Reviews</h1>
       <?php if(isset($_SESSION['user_id'])): ?>
-        <button class="addReview _addReview">Add Review</button>
+        <button class="buttonForm _addReview">Add Review</button>
         <div class="reviewForm _reviewForm">
         <form action="index.php?page=game&id=<?=$game->game_id?>&review=true" method="post">
           <div>Comment: </div>
@@ -49,7 +49,7 @@
               <option value="10">10</option>
             </select>
           </div>
-          <input class="addReview" type="submit">
+          <input class="buttonForm" type="submit" value="Submit">
         </form>
         </div>
       <?php endif; ?>

@@ -1,4 +1,4 @@
-<div class="mainPage">
+<!-- <div class="mainPage"> -->
     <div class="adv-search">
         <h3>Advanced Search</h3>
         <table>
@@ -43,13 +43,13 @@
                 </td>
             </tr>
         </table>
-        <input type="submit" value="Search">
+        <input class="buttonForm" type="submit" value="Search">
         </form>
     </div>
     <?php foreach($results as $game): ?>
         <div class="gameSection">
             <a href="<?= $game->link() ?>">
-                <img class="gameBox" src="img/<?= $game->image_url ?>">
+                <img class="gameBox thumbnail" src="img/<?= $game->image_url ?>">
             </a>
             <!-- <img class="gameBox" src="img/<?= $game->image_url ?>"> -->
             <div class="infoBox">
@@ -64,4 +64,4 @@
             </div>
         </div>
     <?php endforeach; ?>
-</div>
+<!-- </div> -->

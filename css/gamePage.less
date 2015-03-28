@@ -7,10 +7,6 @@
 		height: 100%;
 		margin: 10px 0 10px 10px;
 	}
-	.gameBox {
-		margin: 10px 0 10px 10px;
-		width:18%; //thumbnail
-	}
 }
 
 .review {
@@ -46,13 +42,15 @@
 	box-sizing: border-box;
 	padding-left: 10px;
 
-	.addReview {
+	.buttonForm {
 		margin: 0 0 10px 0;
 	}
 }
 
-.addReview {
+.buttonForm {
 	background-color: rgba(224, 72, 72, 1);
+	box-sizing: border-box;
+	padding: 5px 5px 5px 5px;
 	margin: 10px;
 	border: none;
 	font-size: 1em; /* 20px / 16px */
@@ -63,6 +61,10 @@
 	&:active {
 		background-color: rgba(255, 83, 84, 0.5);
 	}
+}
+
+.favourite {
+	width: 25%;
 }
 
 textarea{
